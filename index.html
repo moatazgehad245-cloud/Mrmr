@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="11:11 — جواب صغير ليكي.">
+  <meta name="theme-color" content="#100A13">
+  <title>11:11</title>
+
+  <!-- Google Fonts (free, optional — the page falls back to system serif fonts without them) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300;0,500;1,400&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- CSS starfield: visible immediately, and the fallback if Three.js cannot load -->
+  <div class="stars-css" aria-hidden="true"></div>
+
+  <!-- Three.js particle / gem background (loaded from a CDN by script.js) -->
+  <canvas id="bg-canvas" aria-hidden="true"></canvas>
+  <div class="vignette" aria-hidden="true"></div>
+
+  <main id="app">
+
+    <!-- ============ SCREEN 1 — The password lock ============ -->
+    <section id="screen-lock" class="screen active" aria-label="القفل" aria-hidden="false">
+      <div class="ambient" aria-hidden="true"></div>
+
+      <h1 class="brand">11:11</h1>
+
+      <div class="lock3d" id="lock3d" aria-hidden="true">
+        <div class="lock-glow"></div>
+        <div class="lock-float">
+          <div class="lock-parts" id="lock-parts">
+            <div class="lock-shackle"></div>
+            <div class="lock-body"></div>
+          </div>
+        </div>
+      </div>
+
+      <p class="lock-line">في حاجات حلوة مستخبية ورا الباب...</p>
+      <p class="lock-sub">افتحي القفل، يمكن تلاقي حاجة تفرّح قلبك.</p>
+
+      <form id="lock-form" class="lock-form" autocomplete="off" novalidate>
+        <div class="input-wrap" id="input-wrap">
+          <label for="password" class="sr-only">الباسورد</label>
+          <input id="password" name="password" type="password" inputmode="numeric"
+                 maxlength="12" placeholder="••••••••" autocomplete="off" required>
+        </div>
+        <button type="submit" class="unlock-btn">افتحي</button>
+        <p id="error-msg" class="error-msg" role="alert" aria-live="assertive"></p>
+      </form>
+    </section>
+
+    <!-- ============ SCREEN 2 — The flying letter ============ -->
+    <section id="screen-letter" class="screen" aria-label="الجواب" aria-hidden="true">
+      <div class="letter-stage" id="letter-stage">
+
+        <header class="letter-head">
+          <p class="letter-line">في جواب صغير مستنيكي...</p>
+          <p class="touch-counter" id="touch-counter" aria-live="polite">0/3</p>
+        </header>
+
+        <div class="letter-wrap" id="letter-wrap" role="button" tabindex="0"
+             aria-label="الجواب الصغير — المسيه">
+          <div class="aura" aria-hidden="true"></div>
+          <div class="letter-tilt">
+            <div class="letter-float">
+              <div class="envelope">
+                <span class="envelope-mark" aria-hidden="true">11:11</span>
+                <div class="seal" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.6 2.6 5 6.2 5c2.2 0 3.6 1.2 4.4 2.5C11.4 6.2 12.8 5 15 5c3.6 0 5.3 3.6 3.8 6.8C18.5 16.4 12 21 12 21z"/>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <p class="letter-hint">حاولي تلمسيه ٣ مرات 🤍</p>
+        <div class="flash" id="flash" aria-hidden="true"></div>
+      </div>
+    </section>
+
+    <!-- ============ SCREEN 3 — The romantic message ============ -->
+    <section id="screen-message" class="screen" aria-label="الرسالة" aria-hidden="true">
+      <div class="ambient ambient--soft" aria-hidden="true"></div>
+      <div class="petals" id="petals" aria-hidden="true"></div>
+
+      <article class="msg-wrap">
+        <div class="heart-3d" aria-hidden="true">
+          <svg class="heart-svg" viewBox="0 0 24 24">
+            <defs>
+              <linearGradient id="heartGrad" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#ffd3de"/>
+                <stop offset="0.5" stop-color="#d9a0ae"/>
+                <stop offset="1" stop-color="#8a2c50"/>
+              </linearGradient>
+            </defs>
+            <path fill="url(#heartGrad)" d="M12 21s-7.5-4.6-9.6-9.2C.9 8.6 2.6 5 6.2 5c2.2 0 3.6 1.2 4.4 2.5C11.4 6.2 12.8 5 15 5c3.6 0 5.3 3.6 3.8 6.8C18.5 16.4 12 21 12 21z"/>
+          </svg>
+        </div>
+
+        <div class="msg-card">
+          <div class="msg-body">
+            <!-- Edit the message here. Each <p> is one paragraph. -->
+            <h2 class="msg-title reveal">يا أجمل قلب 🤍</h2>
+            <p class="reveal">من قلبي، بتمنالك كل التوفيق والنجاح في كل خطوة جاية.</p>
+            <p class="reveal">ربنا يفتحلك أبواب الخير، ويكرمك فوق ما تتمني، ويحققلك كل اللي نفسك فيه، ويجعل تعبك دايمًا نهايته فرحة.</p>
+            <p class="reveal">أتمنى تفضلي دايمًا مبسوطة، وقلبك مطمّن، وضحكتك منوّرة الدنيا.</p>
+            <p class="reveal">ربنا يحفظك من كل زعل، ويكتبلك أيام حلوة شبه قلبك، ويفضل حواليكي كل اللي بيحبوكي بصدق.</p>
+            <p class="reveal">إنتِ تستاهلي كل حاجة حلوة في الدنيا… ويمكن أكتر كمان.</p>
+          </div>
+          <p class="msg-footer reveal">With love, always ♥</p>
+        </div>
+      </article>
+    </section>
+
+  </main>
+
+  <!-- Music toggle: appears after unlocking; hidden automatically if assets/sounds/song.mp3 is missing -->
+  <button id="music-toggle" class="music-toggle" type="button"
+          aria-label="تشغيل أو إيقاف الموسيقى" aria-pressed="true" hidden>♪</button>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
